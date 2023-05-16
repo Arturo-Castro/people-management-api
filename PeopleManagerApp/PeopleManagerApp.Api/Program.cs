@@ -1,5 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using PeopleManagerApp.Application.Interfaces;
+using PeopleManagerApp.Application.Services;
 using PeopleManagerApp.Infrastructure;
+using PeopleManagerApp.Infrastructure.Interfaces;
+using PeopleManagerApp.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +19,12 @@ builder.Services.AddDbContext<ApplicationContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddAutoMapper(typeof(Program));
+
+builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+
+builder.Services.AddScoped<IPersonService, PersonService>();
 
 var app = builder.Build();
 
