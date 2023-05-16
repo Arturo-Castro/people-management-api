@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\PeopleManagerApp.Domain\PeopleManagerApp.Domain.csproj" />
+    <ProjectReference Include="..\PeopleManagerApp.Infrastructure\PeopleManagerApp.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

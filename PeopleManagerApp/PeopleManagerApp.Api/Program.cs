@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using PeopleManagerApp.Application.Automapper;
 using PeopleManagerApp.Application.Interfaces;
 using PeopleManagerApp.Application.Services;
 using PeopleManagerApp.Infrastructure;
@@ -20,8 +22,11 @@ builder.Services.AddDbContext<ApplicationContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-builder.Services.AddAutoMapper(typeof(Program));
+builder.Logging.ClearProviders();
+builder.Logging.AddLog4Net();
 
+
+builder.Services.AddAutoMapper(typeof(MappingProfiles));
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 
 builder.Services.AddScoped<IPersonService, PersonService>();
