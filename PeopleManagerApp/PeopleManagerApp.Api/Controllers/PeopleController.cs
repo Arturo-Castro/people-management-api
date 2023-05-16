@@ -31,7 +31,22 @@ namespace PeopleManagerApp.Api.Controllers
                 this._logger.Error(e);
                 return NotFound();
             }
+        }
 
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PersonDto))]
+        public async Task<IActionResult> GetPersonById(long id)
+        {
+            try
+            {
+                var response = await this._personService.GetPersonById(id);
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                this._logger.Error(e);
+                return NotFound();
+            }
         }
     }
 }

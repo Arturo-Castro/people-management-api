@@ -10,5 +10,6 @@ namespace PeopleManagerApp.Application.Interfaces
     public interface IPersonService
     {
         Task<IEnumerable<PersonDto>> GetAllPeople();
+        Task<PersonDto> GetPersonById(long personId);
     }
 }
