@@ -31,5 +31,19 @@ namespace PeopleManagerApp.Infrastructure.Repositories
                 .FirstOrDefaultAsync(p => p.Id == personId);
             return result;
         }
+
+        public async Task<Person> GetRandomPerson()
+        {
+            var random = new Random();
+
+            var peopleCount = await this._context.People.CountAsync();
+            if (peopleCount == 0)
+            {
+                return null;
+            }
+            var randomSkip = random.Next(0, peopleCount);
+            var person = await this._context.People.Skip(randomSkip).FirstOrDefaultAsync();
+            return person;
+        }
     }
 }

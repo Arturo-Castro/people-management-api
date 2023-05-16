@@ -28,5 +28,12 @@ namespace PeopleManagerApp.Application.Services
             var response = this._mapper.Map<PersonDto>(result);
             return response;
         }
+
+        public async Task<PersonDto> GetRandomPerson()
+        {
+            var result = await this._personRepository.GetRandomPerson();
+            var response = this._mapper.Map<PersonDto>(result);
+            return response;
+        }
     }
 }

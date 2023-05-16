@@ -48,5 +48,21 @@ namespace PeopleManagerApp.Api.Controllers
                 return NotFound();
             }
         }
+
+        [HttpGet("shuffle")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PersonDto))]
+        public async Task<IActionResult> GetRandomPerson()
+        {
+            try
+            {
+                var response = await this._personService.GetRandomPerson();
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                this._logger.Error(e);
+                return NotFound();
+            }
+        }
     }
 }
