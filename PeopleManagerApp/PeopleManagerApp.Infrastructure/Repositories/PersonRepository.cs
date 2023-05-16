@@ -45,5 +45,20 @@ namespace PeopleManagerApp.Infrastructure.Repositories
             var person = await this._context.People.Skip(randomSkip).FirstOrDefaultAsync();
             return person;
         }
+
+        public async Task<bool> SoftDeletePerson(long personId)
+        {
+            var person = await this._context.People.FirstOrDefaultAsync(p => p.Id == personId && p.IsDeleted == false);
+            if (person == null)
+            {
+                return false;
+            }
+            person.IsDeleted = true;
+            person.DeletedAt = DateTime.Now;
+
+            await this._context.SaveChangesAsync();
+
+            return true;
+        }
     }
 }
