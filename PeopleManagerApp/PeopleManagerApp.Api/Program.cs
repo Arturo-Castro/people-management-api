@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -27,9 +28,19 @@ builder.Logging.AddLog4Net();
 
 
 builder.Services.AddAutoMapper(typeof(MappingProfiles));
+
+
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 
 builder.Services.AddScoped<IPersonService, PersonService>();
+
+
+builder.Services.AddApiVersioning(options =>
+{
+    options.ReportApiVersions = true;
+    options.AssumeDefaultVersionWhenUnspecified = true;
+    options.DefaultApiVersion = new ApiVersion(1, 0);
+});
 
 var app = builder.Build();
 
