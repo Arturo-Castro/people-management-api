@@ -24,5 +24,12 @@ namespace PeopleManagerApp.Infrastructure.Repositories
                 .ToListAsync();
             return result;
         }
+
+        public async Task<Person> GetPersonById(long personId)
+        {
+            var result = await this._context.People
+                .FirstOrDefaultAsync(p => p.Id == personId);
+            return result;
+        }
     }
 }

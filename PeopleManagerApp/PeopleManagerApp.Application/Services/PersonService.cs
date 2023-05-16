@@ -21,5 +21,12 @@ namespace PeopleManagerApp.Application.Services
             var response = this._mapper.Map<IEnumerable<PersonDto>>(result);
             return response;
         }
+
+        public async Task<PersonDto> GetPersonById(long personId)
+        {
+            var result = await this._personRepository.GetPersonById(personId);
+            var response = this._mapper.Map<PersonDto>(result);
+            return response;
+        }
     }
 }
