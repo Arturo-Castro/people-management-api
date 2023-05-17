@@ -12,5 +12,6 @@ namespace PeopleManagerApp.Infrastructure.Interfaces
         Task<IEnumerable<Person>> GetAllPeople();
         Task<Person> GetPersonById(long personId);
         Task<Person> GetRandomPerson();
+        Task<bool> SoftDeletePerson(long personId);
     }
 }

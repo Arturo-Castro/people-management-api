@@ -64,5 +64,20 @@ namespace PeopleManagerApp.Api.Controllers
                 return NotFound();
             }
         }
+
+        [HttpDelete("{id}")]        
+        public async Task<IActionResult> SoftDeletePerson(long id)
+        {
+            try
+            {
+                var response = await this._personService.SoftDeletePerson(id);
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                this._logger.Error(e);
+                return NotFound();
+            }
+        }
     }
 }

@@ -35,5 +35,10 @@ namespace PeopleManagerApp.Application.Services
             var response = this._mapper.Map<PersonDto>(result);
             return response;
         }
+
+        public async Task<bool> SoftDeletePerson(long personId)
+        {
+            return await this._personRepository.SoftDeletePerson(personId);
+        }
     }
 }
