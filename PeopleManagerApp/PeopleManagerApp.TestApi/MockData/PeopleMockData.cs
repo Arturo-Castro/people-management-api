@@ -136,5 +136,165 @@ namespace PeopleManagerApp.TestApi.MockData
         {
             return null;
         }
+
+        public static IEnumerable<Person> GetDeletedPeopleEntityList()
+        {
+            IEnumerable<Person> personEntityList = new List<Person>()
+            {
+                new Person
+                {
+                    Id = 1,
+                    Name = "test",
+                    LastName = "1",
+                    Age = 22,
+                    Address = "TestAddress1",
+                    Phone = "123",
+                    Email = "test1@yahoo.com",
+                    IsDeleted = true,
+                    DeletedAt = DateTime.Now
+                },
+                new Person
+                {
+                    Id = 2,
+                    Name = "test",
+                    LastName = "2",
+                    Age = 32,
+                    Address = "TestAddress2",
+                    Phone = "1234",
+                    Email = "test2@yahoo.com",
+                    IsDeleted = true,
+                    DeletedAt = DateTime.Now
+                },
+                new Person
+                {
+                    Id = 3,
+                    Name = "test",
+                    LastName = "3",
+                    Age = 22,
+                    Address = "TestAddress3",
+                    Phone = "12345",
+                    Email = "test3@yahoo.com",
+                    IsDeleted = true,
+                    DeletedAt = DateTime.Now
+                }
+            };
+            return personEntityList;
+        }
+
+        public static IEnumerable<Person> GetMixedPeopleEntityList()
+        {
+            IEnumerable<Person> personEntityList = new List<Person>()
+            {
+                new Person
+                {
+                    Id = 1,
+                    Name = "test",
+                    LastName = "1",
+                    Age = 22,
+                    Address = "TestAddress1",
+                    Phone = "123",
+                    Email = "test1@yahoo.com",
+                    IsDeleted = false,
+                    DeletedAt = null
+                },
+                new Person
+                {
+                    Id = 2,
+                    Name = "test",
+                    LastName = "2",
+                    Age = 32,
+                    Address = "TestAddress2",
+                    Phone = "1234",
+                    Email = "test2@yahoo.com",
+                    IsDeleted = true,
+                    DeletedAt = DateTime.Now
+                },
+                new Person
+                {
+                    Id = 3,
+                    Name = "test",
+                    LastName = "3",
+                    Age = 22,
+                    Address = "TestAddress3",
+                    Phone = "12345",
+                    Email = "test3@yahoo.com",
+                    IsDeleted = true,
+                    DeletedAt = DateTime.Now
+                },
+                new Person
+                {
+                    Id = 4,
+                    Name = "test",
+                    LastName = "4",
+                    Age = 53,
+                    Address = "TestAddress4",
+                    Phone = "123456",
+                    Email = "test4@yahoo.com",
+                    IsDeleted = false,
+                    DeletedAt = null
+                },
+            };
+            return personEntityList;
+        }
+
+        public static IEnumerable<Person> GetPeopleEntityListWithUnorderedNames()
+        {
+            IEnumerable<Person> personEntityList = new List<Person>()
+            {
+                new Person
+                {
+                    Id = 1,
+                    Name = "Fernando",
+                    LastName = "1",
+                    Age = 22,
+                    Address = "TestAddress1",
+                    Phone = "123",
+                    Email = "test1@yahoo.com",
+                    IsDeleted = false,
+                    DeletedAt = null
+                },
+                new Person
+                {
+                    Id = 2,
+                    Name = "Mario",
+                    LastName = "2",
+                    Age = 32,
+                    Address = "TestAddress2",
+                    Phone = "1234",
+                    Email = "test2@yahoo.com",
+                    IsDeleted = false,
+                    DeletedAt = null
+                },
+                new Person
+                {
+                    Id = 3,
+                    Name = "Alberto",
+                    LastName = "3",
+                    Age = 22,
+                    Address = "TestAddress3",
+                    Phone = "12345",
+                    Email = "test3@yahoo.com",
+                    IsDeleted = false,
+                    DeletedAt = null
+                }
+            };
+            return personEntityList;
+        }
+
+        public static Person GetDeletedPersonEntity(long id)
+        {
+            return new Person
+            {
+                Id = id,
+                Name = "test",
+                LastName = "4",
+                Age = 15,
+                Address = "TestAddress4",
+                Phone = "123",
+                Email = "test4@yahoo.com",
+                IsDeleted = true,
+                DeletedAt = DateTime.Now
+            };
+        }
     }
 }
