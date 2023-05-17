@@ -20,6 +20,7 @@ namespace PeopleManagerApp.Infrastructure.Repositories
         public async Task<IEnumerable<Person>> GetAllPeople()
         {
             var result = await this._context.People
+                .Where(p => p.IsDeleted == false)
                 .OrderBy(p => p.Name)
                 .ToListAsync();
             return result;
@@ -28,7 +29,7 @@ namespace PeopleManagerApp.Infrastructure.Repositories
         public async Task<Person> GetPersonById(long personId)
         {
             var result = await this._context.People
-                .FirstOrDefaultAsync(p => p.Id == personId);
+                .FirstOrDefaultAsync(p => p.Id == personId && p.IsDeleted == false);
             return result;
         }
 
@@ -36,13 +37,18 @@ namespace PeopleManagerApp.Infrastructure.Repositories
         {
             var random = new Random();
 
-            var peopleCount = await this._context.People.CountAsync();
+            var peopleCount = await this._context.People
+                .Where(p => p.IsDeleted == false)
+                .CountAsync();
             if (peopleCount == 0)
             {
                 return null;
             }
             var randomSkip = random.Next(0, peopleCount);
-            var person = await this._context.People.Skip(randomSkip).FirstOrDefaultAsync();
+            var person = await this._context.People
+                .Where(p => p.IsDeleted == false)
+                .Skip(randomSkip)
+                .FirstOrDefaultAsync();
             return person;
         }
 
