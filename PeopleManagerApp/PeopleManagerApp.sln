@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeopleManagerApp.Domain", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeopleManagerApp.Infrastructure", "PeopleManagerApp.Infrastructure\PeopleManagerApp.Infrastructure.csproj", "{9EBA58B3-903E-4602-99C2-07F9409E5F86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleManagerApp.TestApi", "PeopleManagerApp.TestApi\PeopleManagerApp.TestApi.csproj", "{A4AD3B5E-4E89-48DA-AA22-2C8BC2188FC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeopleManagerApp.TestApi", "PeopleManagerApp.TestApi\PeopleManagerApp.TestApi.csproj", "{A4AD3B5E-4E89-48DA-AA22-2C8BC2188FC5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
