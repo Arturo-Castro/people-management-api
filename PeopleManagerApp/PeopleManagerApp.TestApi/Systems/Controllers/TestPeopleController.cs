@@ -21,7 +21,7 @@ namespace PeopleManagerApp.TestApi.Systems.Controllers
         public TestPeopleController()
         {
             this._personServiceMock = new Mock<IPersonService>();
-            this._sut = new PeopleController(_personServiceMock.Object);
+            this._sut = new PeopleController(this._personServiceMock.Object);
         }
 
         [Fact]
