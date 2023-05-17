@@ -24,6 +24,10 @@ namespace PeopleManagerApp.Api.Controllers
             try
             {
                 var response = await this._personService.GetAllPeople();
+                if (!response.Any())
+                {
+                    return NotFound();
+                }
                 return Ok(response);
             }
             catch (Exception e)
@@ -40,6 +44,10 @@ namespace PeopleManagerApp.Api.Controllers
             try
             {
                 var response = await this._personService.GetPersonById(id);
+                if (response == null)
+                {
+                    return NotFound();
+                }
                 return Ok(response);
             }
             catch (Exception e)
@@ -56,6 +64,10 @@ namespace PeopleManagerApp.Api.Controllers
             try
             {
                 var response = await this._personService.GetRandomPerson();
+                if (response == null)
+                {
+                    return NotFound();
+                }
                 return Ok(response);
             }
             catch (Exception e)
@@ -65,12 +77,17 @@ namespace PeopleManagerApp.Api.Controllers
             }
         }
 
-        [HttpDelete("{id}")]        
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(bool))]
         public async Task<IActionResult> SoftDeletePerson(long id)
         {
             try
             {
                 var response = await this._personService.SoftDeletePerson(id);
+                if (response == false)
+                {
+                    return NotFound();
+                }
                 return Ok(response);
             }
             catch (Exception e)
